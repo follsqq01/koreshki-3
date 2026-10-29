@@ -28,6 +28,16 @@ if(exercise){
  $('#restart').addEventListener('click',()=>{Object.keys(ratings).forEach(k=>ratings[k]=0);renderRatings();$('#before-reveal').hidden=false;$('#after-reveal').hidden=true;$('#test-result').hidden=true;$('#candidate-photo').hidden=true;$('.anonymous').hidden=false;$('#candidate-age').hidden=true;$('#test-progress').textContent='01 / 02 — первое впечатление';$('#test-hint').textContent='Оцените кандидата по трём критериям, затем примите решение.';$('.test-heading').scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth'});$('.ratings button').focus({preventScroll:true})});
 }
 
+// Animate the native FAQ disclosure in both directions while preserving its semantics.
+$$('.faq details').forEach(details=>{
+ const summary=$('summary',details),answer=$('.faq-answer',details);let animation,isClosing=false,isExpanding=false;
+ const finish=open=>{details.open=open;animation=null;isClosing=false;isExpanding=false;details.style.height='';details.style.overflow=''};
+ const expand=()=>{isExpanding=true;const from=`${details.offsetHeight}px`,to=`${summary.offsetHeight+answer.offsetHeight}px`;animation?.cancel();animation=details.animate({height:[from,to]},{duration:420,easing:'cubic-bezier(.22,.8,.3,1)'});animation.onfinish=()=>finish(true);animation.oncancel=()=>{isExpanding=false}};
+ const open=()=>{details.style.height=`${details.offsetHeight}px`;details.open=true;requestAnimationFrame(expand)};
+ const close=()=>{isClosing=true;const from=`${details.offsetHeight}px`,to=`${summary.offsetHeight}px`;animation?.cancel();animation=details.animate({height:[from,to]},{duration:340,easing:'cubic-bezier(.4,0,.2,1)'});animation.onfinish=()=>finish(false);animation.oncancel=()=>{isClosing=false}};
+ summary.addEventListener('click',event=>{event.preventDefault();if(reducedMotion.matches){details.open=!details.open;return}details.style.overflow='hidden';if(isClosing||!details.open)open();else if(isExpanding||details.open)close()});
+});
+
 // Scale each original collage uniformly, using width only (never scroll position).
 const artSections=$$('.art-section');
 function sizeArt(){document.documentElement.style.setProperty('--page-scale',innerWidth/1512);artSections.forEach(section=>{const scale=section.clientWidth/1512;section.style.setProperty('--art-scale',scale);section.style.setProperty('--art-height',section.dataset.artHeight);section.style.height=(Number(section.dataset.artHeight)*scale)+'px'});$$('.story').forEach(card=>card.style.setProperty('--paper-scale',card.clientWidth/800.211))}
