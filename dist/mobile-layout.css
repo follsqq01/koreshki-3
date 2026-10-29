@@ -7,6 +7,7 @@
  .stories-sticky:before{display:none}
  .stories-track{position:static;inset:auto;display:flex;flex-direction:column;gap:24px;padding:0;overflow:visible;transform:none!important;will-change:auto;scroll-snap-type:none}
  .stories-section .story,.stories-section .story:nth-child(even){container-type:normal;flex:none;width:100%;height:auto;min-height:0;margin:0;padding:28px 24px 32px;background:#fafafa;transform:none!important;translate:none!important;rotate:none!important;box-sizing:border-box}
+ .stories-section .story:nth-child(1){transform:rotate(-4deg)!important}.stories-section .story:nth-child(2){transform:rotate(3deg)!important}.stories-section .story:nth-child(3){transform:rotate(-3deg)!important}.stories-section .story:nth-child(4){transform:rotate(5deg)!important}
  .stories-section .story-paper-art{display:none!important}
  .stories-section .story:after{display:none}
  .stories-section .story-person{display:flex;flex-direction:column;align-items:flex-start;gap:20px;padding:0}

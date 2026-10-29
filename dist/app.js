@@ -34,16 +34,17 @@ function animateFaq(details,open){
  const summary=$('summary',details),answer=$('.faq-answer',details),start=details.getBoundingClientRect().height;
  details._faqAnimation?.cancel();details._faqAnswerAnimation?.cancel();
  if(open)details.open=true;
- if(reducedMotion.matches){details.open=open;details.dataset.faqState=open?'open':'closed';return}
+ if(reducedMotion.matches){details.open=open;details.dataset.faqState=open?'open':'closed';return Promise.resolve()}
  const end=open?summary.offsetHeight+answer.offsetHeight:summary.offsetHeight;
  details.dataset.faqState=open?'opening':'closing';details.classList.add('faq-animating');details.style.height=`${start}px`;details.style.overflow='hidden';
  const animation=details.animate({height:[`${start}px`,`${end}px`]},{duration:open?520:420,easing:'cubic-bezier(.22,.8,.25,1)'});details._faqAnimation=animation;
  details._faqAnswerAnimation=answer.animate(open?{opacity:[0,1],transform:['translateY(-8px)','translateY(0)']}:{opacity:[1,0],transform:['translateY(0)','translateY(-6px)']},{duration:open?360:240,delay:open?90:0,easing:'ease-out',fill:'both'});
- animation.onfinish=()=>{if(details._faqAnimation!==animation)return;details.open=open;details.dataset.faqState=open?'open':'closed';details.classList.remove('faq-animating');details.style.height='';details.style.overflow='';details._faqAnimation=null;details._faqAnswerAnimation?.cancel();details._faqAnswerAnimation=null};
+ return new Promise(resolve=>{animation.onfinish=()=>{if(details._faqAnimation!==animation){resolve();return}details.open=open;details.dataset.faqState=open?'open':'closed';details.classList.remove('faq-animating');details.style.height='';details.style.overflow='';details._faqAnimation=null;details._faqAnswerAnimation?.cancel();details._faqAnswerAnimation=null;resolve()}});
 }
+let faqBusy=false;
 faqItems.forEach(details=>{
  details.dataset.faqState=details.open?'open':'closed';
- $('summary',details).addEventListener('click',event=>{event.preventDefault();const open=!(details.open&&details.dataset.faqState!=='closing');if(open)faqItems.filter(item=>item!==details&&(item.open||item.dataset.faqState==='opening')).forEach(item=>animateFaq(item,false));animateFaq(details,open)});
+ $('summary',details).addEventListener('click',async event=>{event.preventDefault();if(faqBusy)return;faqBusy=true;const open=!details.open;if(open){const current=faqItems.find(item=>item!==details&&item.open);if(current)await animateFaq(current,false)}await animateFaq(details,open);faqBusy=false});
 });
 
 // Scale each original collage uniformly, using width only (never scroll position).
