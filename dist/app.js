@@ -28,14 +28,22 @@ if(exercise){
  $('#restart').addEventListener('click',()=>{Object.keys(ratings).forEach(k=>ratings[k]=0);renderRatings();$('#before-reveal').hidden=false;$('#after-reveal').hidden=true;$('#test-result').hidden=true;$('#candidate-photo').hidden=true;$('.anonymous').hidden=false;$('#candidate-age').hidden=true;$('#test-progress').textContent='01 / 02 — первое впечатление';$('#test-hint').textContent='Оцените кандидата по трём критериям, затем примите решение.';$('.test-heading').scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth'});$('.ratings button').focus({preventScroll:true})});
 }
 
-// Animate the native FAQ disclosure in both directions while preserving its semantics.
-$$('.faq details').forEach(details=>{
- const summary=$('summary',details),answer=$('.faq-answer',details);let animation,isClosing=false,isExpanding=false;
- const finish=open=>{details.open=open;animation=null;isClosing=false;isExpanding=false;details.style.height='';details.style.overflow=''};
- const expand=()=>{isExpanding=true;const from=`${details.offsetHeight}px`,to=`${summary.offsetHeight+answer.offsetHeight}px`;animation?.cancel();animation=details.animate({height:[from,to]},{duration:420,easing:'cubic-bezier(.22,.8,.3,1)'});animation.onfinish=()=>finish(true);animation.oncancel=()=>{isExpanding=false}};
- const open=()=>{details.style.height=`${details.offsetHeight}px`;details.open=true;requestAnimationFrame(expand)};
- const close=()=>{isClosing=true;const from=`${details.offsetHeight}px`,to=`${summary.offsetHeight}px`;animation?.cancel();animation=details.animate({height:[from,to]},{duration:340,easing:'cubic-bezier(.4,0,.2,1)'});animation.onfinish=()=>finish(false);animation.oncancel=()=>{isClosing=false}};
- summary.addEventListener('click',event=>{event.preventDefault();if(reducedMotion.matches){details.open=!details.open;return}details.style.overflow='hidden';if(isClosing||!details.open)open();else if(isExpanding||details.open)close()});
+// Smooth single-open FAQ accordion, including an animated close.
+const faqItems=$$('.faq details');
+function animateFaq(details,open){
+ const summary=$('summary',details),answer=$('.faq-answer',details),start=details.getBoundingClientRect().height;
+ details._faqAnimation?.cancel();details._faqAnswerAnimation?.cancel();
+ if(open)details.open=true;
+ if(reducedMotion.matches){details.open=open;details.dataset.faqState=open?'open':'closed';return}
+ const end=open?summary.offsetHeight+answer.offsetHeight:summary.offsetHeight;
+ details.dataset.faqState=open?'opening':'closing';details.classList.add('faq-animating');details.style.height=`${start}px`;details.style.overflow='hidden';
+ const animation=details.animate({height:[`${start}px`,`${end}px`]},{duration:open?520:420,easing:'cubic-bezier(.22,.8,.25,1)'});details._faqAnimation=animation;
+ details._faqAnswerAnimation=answer.animate(open?{opacity:[0,1],transform:['translateY(-8px)','translateY(0)']}:{opacity:[1,0],transform:['translateY(0)','translateY(-6px)']},{duration:open?360:240,delay:open?90:0,easing:'ease-out',fill:'both'});
+ animation.onfinish=()=>{if(details._faqAnimation!==animation)return;details.open=open;details.dataset.faqState=open?'open':'closed';details.classList.remove('faq-animating');details.style.height='';details.style.overflow='';details._faqAnimation=null;details._faqAnswerAnimation?.cancel();details._faqAnswerAnimation=null};
+}
+faqItems.forEach(details=>{
+ details.dataset.faqState=details.open?'open':'closed';
+ $('summary',details).addEventListener('click',event=>{event.preventDefault();const open=!(details.open&&details.dataset.faqState!=='closing');if(open)faqItems.filter(item=>item!==details&&(item.open||item.dataset.faqState==='opening')).forEach(item=>animateFaq(item,false));animateFaq(details,open)});
 });
 
 // Scale each original collage uniformly, using width only (never scroll position).

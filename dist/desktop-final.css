@@ -2,6 +2,7 @@
 @font-face{font-family:FreeSans;src:url('fonts/freesansbold.ttf') format('truetype');font-weight:700;font-display:swap}
 .faq summary,.faq-answer,.art-button,.art-button p,.button{font-family:FreeSans,Arial,sans-serif!important}
 .faq summary:hover,.faq details[open]{background:transparent}
+.faq-answer{animation:none!important}.faq details.faq-animating{will-change:height}.faq summary span{transition:transform .45s cubic-bezier(.22,.8,.25,1)!important}
 .statement .highlight{display:inline-block;position:relative;isolation:isolate;line-height:1.02;margin-top:.12em;padding:0 .025em;background:none!important;vertical-align:baseline}
 .statement .highlight:before{content:'';position:absolute;inset:.05em 0 -.02em;background:#ffcfff;z-index:-1;transform:scaleX(0);transform-origin:left center;transition:transform 1.2s cubic-bezier(.25,.7,.3,1)}
 .statement .highlight.is-visible:before{transform:scaleX(1)}
