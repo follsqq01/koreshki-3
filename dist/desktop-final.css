@@ -1,0 +1,38 @@
+@font-face{font-family:FreeSans;src:url('fonts/freesans.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:FreeSans;src:url('fonts/freesansbold.ttf') format('truetype');font-weight:700;font-display:swap}
+.faq summary,.faq-answer,.art-button,.art-button p,.button{font-family:FreeSans,Arial,sans-serif!important}
+.faq summary:hover,.faq details[open]{background:transparent}
+.statement .highlight{display:inline-block;position:relative;isolation:isolate;line-height:1.02;margin-top:.12em;padding:0 .025em;background:none!important;vertical-align:baseline}
+.statement .highlight:before{content:'';position:absolute;inset:.05em 0 -.02em;background:#ffcfff;z-index:-1;transform:scaleX(0);transform-origin:left center;transition:transform 1.2s cubic-bezier(.25,.7,.3,1)}
+.statement .highlight.is-visible:before{transform:scaleX(1)}
+/* A tall document section pins the artwork while ordinary vertical scroll
+   moves through all four sheets. No wheel capture or input-mode switch. */
+@media(min-width:701px){
+ .stories-section{position:relative;height:calc(100vh + var(--story-distance,1800px));padding:0;isolation:auto}
+ .stories-section:before,.stories-section:after{display:none}
+ .stories-sticky{position:sticky;top:0;height:100vh;overflow:clip;isolation:isolate}
+ .stories-sticky:before{content:'';position:absolute;inset:9% -3% 6%;background:#432e2c;transform:rotate(-2.53deg);z-index:-1}
+ .stories-original-back{left:12.33%;top:2%;z-index:-2}
+ .stories-track{position:absolute;inset:0;display:flex;align-items:center;gap:3vw;padding:0 3vw;overflow:visible;scroll-snap-type:none;scroll-behavior:auto;will-change:transform;transform:translate3d(var(--story-x,0px),0,0)}
+ .story,.story:nth-child(even){container-type:inline-size;flex:0 0 min(53vw,72vh);height:min(58.64vw,79.66vh);min-height:0;margin:0;padding:0;transform:translateY(4vh) rotate(-1.56deg);background:none}
+ .story:nth-child(even){transform:translateY(-4vh) rotate(2.03deg)}
+ .story-person{padding:7.5cqw 8.2cqw 0}.story-person img{width:34cqw;aspect-ratio:1;object-fit:cover}.story-person>div{margin-top:16.5cqw}
+ .story-person h3{font:6.3cqw/1.03 Helvetica;letter-spacing:-.03em}.story-person p{font:3.94cqw/1.1 Helvetica;margin-top:1cqw}
+ .story-body{font:2.756cqw/1.1 Helvetica;letter-spacing:-.02em;margin:10cqw 8.2cqw 0;max-width:69cqw}
+}
+footer.project-footer{display:block;position:relative;min-height:0;height:26vw;background:#4fb548;clip-path:polygon(0 0,98% 34%,100% 0,100% 100%,0 100%);padding:0;color:#fafafa}
+.footer-brand{position:absolute;left:36%;bottom:4vw;display:flex;align-items:center;gap:2vw}
+.footer-brand img{width:6.6vw;height:auto}.footer-brand p{font:400 1.85vw/1.1 Helvetica;margin:0;letter-spacing:-.02em}
+.exercise-page{background:#ffcfff}.exercise-page main{width:100%}.exercise-close{position:fixed;top:5px;right:12px;z-index:50;font:28px/1 FreeSans;text-decoration:none;color:#432e2c}
+.exercise-screen{overflow:clip}.exercise-photo{overflow:hidden}.exercise-photo img{width:197px;height:197px;object-fit:cover;max-width:none}
+.exercise-photo.concealed img{filter:blur(12px);transform:scale(1.08)}.concealed-age{filter:blur(6px)}
+.art-ratings{display:flex;gap:5px;width:164.061px!important;height:28.869px!important;align-items:center}
+.art-ratings button{appearance:none;border:0;padding:0;width:28.8px;height:28.8px;min-width:28.8px;border-radius:50%;background:#e7e7e7;font-size:0;box-shadow:none;outline:none;cursor:pointer;transform:none;transition:none}
+.art-ratings button.selected{background:#f14c2d}.art-ratings button:hover,.art-ratings button:active{outline:none;box-shadow:none;transform:none}.art-ratings button:focus-visible{outline:2px dashed #432e2c;outline-offset:3px}
+.art-decisions{position:absolute;left:86px;top:525px;width:500px;color:white;background:#f14c2d}.art-decisions>p{font:28px/1.12 Helvetica;margin-bottom:26px}.art-decisions>div{display:flex;flex-wrap:wrap;gap:16px}
+.art-action{background:transparent;border:1.5px solid currentColor!important;border-radius:8px;padding:12px 18px;font:24px/1.1 FreeSans;color:inherit;cursor:pointer}.art-action:hover{background:#ffffff20}
+.answer-art{background:transparent;cursor:pointer}.answer-art:hover{background:#eeeeee}
+.art-feedback{position:absolute;left:104px;top:210px;width:505px;color:#432e2c;transform:rotate(2deg)}.art-feedback>p{font:28px/1.15 Helvetica;margin-bottom:24px}.art-feedback .art-action{font-size:22px}
+@media(prefers-reduced-motion:reduce){.statement .highlight:before{transform:scaleX(1);transition:none}}
+
+.resume-rules{position:absolute;left:789px;top:424px;width:542px;height:1px;background:#777;box-shadow:0 174px #777,0 304px #777;pointer-events:none}

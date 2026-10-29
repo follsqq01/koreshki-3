@@ -1,0 +1,27 @@
+/* Keep the supplied 1512 × 982 Figma composition and original paper assets. */
+.exercise-page [hidden]{display:none!important}
+.exercise-progress{position:absolute;left:86px;top:882px;font:21px/1.2 Helvetica;color:#fff}
+.candidate-fact{position:absolute;left:116px;top:205px;width:480px;font:26px/1.15 Helvetica;color:#432e2c;transform:rotate(2.39deg)}
+[data-field="name"]{font-size:33px!important;line-height:1.04!important}
+[data-field="role"]{font-size:22px!important;line-height:1.15!important}
+.candidate-details{width:542px!important;gap:20px!important}
+.candidate-details>div:nth-child(odd){display:grid!important;grid-template-columns:220px 1fr;gap:24px!important;width:542px!important}
+.candidate-details>div:nth-child(odd)>:last-child{width:auto!important;font:20px/1.15 Helvetica!important}
+.candidate-details>div:nth-child(1){min-height:88px}
+.candidate-details>div:nth-child(3){min-height:132px}
+.candidate-details>div:nth-child(5){min-height:88px}
+.answer-art{width:174px!important;padding-left:8px!important;padding-right:8px!important}
+.answer-art p{font-size:22px!important}
+[data-node-id="1:435"]{top:565px!important}
+#previous-rating{font-size:25px!important}
+.summary-copy{position:absolute;left:783px;top:102px;width:542px;color:#432e2c}
+.summary-copy h1{margin:0;font:56px/1.16 Oranienbaum;font-weight:400;letter-spacing:-2.5px}
+.summary-copy #summary-insight{position:absolute;top:244px;left:0;width:530px;margin:0;font:28px/1.04 Helvetica;color:#000;letter-spacing:-.56px}
+.summary-actions{position:absolute;left:783px;bottom:106px;width:542px;display:flex;gap:14px;align-items:center}
+.summary-actions .art-action{position:static;transform:none;display:inline-flex;justify-content:center;align-items:center;text-decoration:none;white-space:nowrap;margin:0;font-size:22px;padding:13px 17px;color:#432e2c}
+.summary-actions .art-action:hover{background:#ffcfff}
+/* Leave room for longer job titles above the stamp. */
+[data-node-id="1:375"]{top:239px!important}
+[data-node-id="1:376"]{top:266px!important}
+
+.summary-copy .summary-count{display:block;white-space:nowrap}

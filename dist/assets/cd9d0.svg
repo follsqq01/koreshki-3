@@ -1,0 +1,23 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1437.18" height="1137.78" viewBox="0 0 1437.18 1137.78" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 2147210996" filter="url(#filter0_d_0_48)">
+<path id="Subtract" d="M114.132 74.0758L37.0787 171.498L36.9613 171.646L37.8099 1061.46L1400.14 1059.51L1399.2 71.9798L114.34 73.8135L114.132 74.0758ZM66.4144 766.484C74.4515 766.021 81.2817 773.825 81.6705 783.913C82.0592 794.002 75.8594 802.555 67.8224 803.018C59.7853 803.481 52.9543 795.678 52.5654 785.589C52.1766 775.5 58.3772 766.946 66.4144 766.484ZM67.9535 714.361C76.2078 713.886 83.2227 721.895 83.622 732.249C84.0211 742.603 77.653 751.383 69.3986 751.858C61.1443 752.333 54.1291 744.324 53.7301 733.97C53.3313 723.616 59.6994 714.837 67.9535 714.361ZM68.1004 319.289C76.1374 318.827 82.9675 326.63 83.3564 336.718C83.7453 346.807 77.5455 355.361 69.5084 355.824C61.4712 356.287 54.6401 348.483 54.2513 338.394C53.8626 328.305 60.0633 319.752 68.1004 319.289ZM69.6385 267.167C77.8927 266.692 84.9078 274.7 85.307 285.054C85.706 295.409 79.3378 304.187 71.0836 304.663C62.8292 305.138 55.8141 297.13 55.4151 286.775C55.0161 276.421 61.3841 267.642 69.6385 267.167Z" fill="url(#paint0_linear_0_48)"/>
+<path id="Vector 19" d="M114.134 73.9235L113.152 170.267L36.9592 171.618L114.134 73.9235Z" fill="#8CBDF5"/>
+</g>
+<defs>
+<filter id="filter0_d_0_48" x="36.9592" y="70.7198" width="1382.56" height="1006.17" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="11.025" dy="7.0875"/>
+<feGaussianBlur stdDeviation="4.17375"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_48"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_48" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_0_48" x1="784.799" y1="35.2132" x2="678.366" y2="1091.47" gradientUnits="userSpaceOnUse">
+<stop offset="0.0192308" stop-color="#B2CCED"/>
+<stop offset="0.884615" stop-color="#D5E5F9"/>
+<stop offset="1" stop-color="#E5F1FF"/>
+</linearGradient>
+</defs>
+</svg>
